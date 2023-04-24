@@ -24,13 +24,22 @@ while True:
     print('3. Martingala.')
     print('4. Exit.')
     seleccion = input('>> ')
+    partida = Juego()
 
     if seleccion == '1':
+
+        if partida.num_azar == 0:
+            print('¡El número ha salido 0! Todo el mundo pierde.')
+            for jugador in jugadores:
+                banca.ganar_dinero(jugador.dinero)
+                jugador.restar_dinero(jugador.dinero)
+                break
+
         for jugador in jugadores:
             predicciones.append(int(jugador.seleccionar_num()))
             jugador.restar_dinero(10)
 
-        resultados = Juego().num_concreto(predicciones)
+        resultados = partida.num_concreto(predicciones)
         for resultado in resultados:
             for jugador in jugadores:
                 if resultado == True:
@@ -45,11 +54,19 @@ while True:
             break
     
     elif seleccion == '2':
+        
+        if partida.num_azar == 0:
+            print('¡El número ha salido 0! Todo el mundo pierde.')
+            for jugador in jugadores:
+                banca.ganar_dinero(jugador.dinero)
+                jugador.restar_dinero(jugador.dinero)
+                break
+
         for jugador in jugadores:
             predicciones.append(jugador.seleccionar_palabra())
             jugador.restar_dinero(10)
 
-        resultados = Juego().par_impar(predicciones)
+        resultados = partida.par_impar(predicciones)
         for resultado in resultados:
             for jugador in jugadores:
                 if resultado == True:
@@ -64,7 +81,7 @@ while True:
             break
     
     elif seleccion == '3':
-        print('No está hecho.')
+        print('---------- No está hecho. ----------')
         print('¿Quieres seguir jugando? ([Si] / No)')
         decision = input('>> ')
         if decision == 'No':
