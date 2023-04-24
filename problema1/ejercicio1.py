@@ -3,7 +3,6 @@ from contador import Contador
 
 contador = Contador()
 cuenta = Cuenta()
-paso = 1
 
 while True:
     contador.aumentar_contador()
