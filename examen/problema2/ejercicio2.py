@@ -17,9 +17,6 @@ while True:
 
 # Creamos predicciones
 while True:
-    for jugador in jugadores:
-        predicciones.append(int(jugador.seleccionar_num()))
-
     # Comenzamos a jugar
     print('A qué juego quieres jugar? Selecciona un número del 1 al 4.')
     print('1. Número al azar.')
@@ -29,14 +26,18 @@ while True:
     seleccion = input('>> ')
 
     if seleccion == '1':
+        for jugador in jugadores:
+            predicciones.append(int(jugador.seleccionar_num()))
+            jugador.restar_dinero(10)
+
         resultados = Juego().num_concreto(predicciones)
         for resultado in resultados:
             for jugador in jugadores:
                 if resultado == True:
                     jugador.ganar_dinero(360)
                 else:
-                    jugador.restar_dinero(10)
                     banca.ganar_dinero(10)
+
         print('¿Quieres seguir jugando? ([Si] / No)')
         decision = input('>> ')
         if decision == 'No':
@@ -44,7 +45,18 @@ while True:
             break
     
     elif seleccion == '2':
-        print('No está hecho.')
+        for jugador in jugadores:
+            predicciones.append(jugador.seleccionar_palabra())
+            jugador.restar_dinero(10)
+
+        resultados = Juego().par_impar(predicciones)
+        for resultado in resultados:
+            for jugador in jugadores:
+                if resultado == True:
+                    jugador.ganar_dinero(20)
+                else:
+                    banca.ganar_dinero(10)
+
         print('¿Quieres seguir jugando? ([Si] / No)')
         decision = input('>> ')
         if decision == 'No':

@@ -12,3 +12,16 @@ class Juego():
             else:
                 resultados.append(False)
         return resultados
+    
+    def par_impar(self, predicciones):
+        resultados = []
+        if self.num_azar % 2 == 0:
+            solucion = 'Par'
+        else:
+            solucion = 'Impar'
+        for prediccion in predicciones:
+            if prediccion == solucion:
+                resultados.append(True)
+            else:
+                resultados.append(False)
+        return resultados
