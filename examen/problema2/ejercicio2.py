@@ -81,7 +81,7 @@ while True:
             break
     
     elif seleccion == '3':
-        print('---------- No está hecho. ----------')
+        print('------------ No está hecho. ------------')
         print('¿Quieres seguir jugando? ([Si] / No)')
         decision = input('>> ')
         if decision == 'No':
