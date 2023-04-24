@@ -1,14 +1,14 @@
-from banca import Banca
-from jugador import Jugador
+import random 
 
-banca = Banca()
-contador = -1
-jugadores = []
-
-# Generamos 4 jugadores
-while True:
-    contador = contador + 1
-    if len(jugadores) >= 4:
-        break
-    jugador = Jugador()
-    jugadores.append(jugador)
+class Juego():
+    def __init__(self):
+        self.num_azar = random.randint(0, 36)
+    
+    def num_concreto(self, predicciones):
+        resultados = []
+        for prediccion in predicciones:
+            if prediccion == self.num_azar:
+                resultados.append(True)
+            else:
+                resultados.append(False)
+        return resultados
